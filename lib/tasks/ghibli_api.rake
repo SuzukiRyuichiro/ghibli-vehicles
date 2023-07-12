@@ -4,7 +4,7 @@ require 'json'
 namespace :ghibli_api do
   desc 'Import vehicles and films appeared to the databse from Ghibli API'
   task import_vehicles: :environment do
-    vehicles_data = JSON.parse(URI.open('https://ghibliapi.vercel.app/vehicles?limit=250').read, symbolize_names: true)
+    vehicles_data = JSON.parse(URI.open('https://ghibli.rest/vehicles').read, symbolize_names: true)
     vehicles_data.each do |vehicle_data|
       # Make films
       film_urls = vehicle_data[:films]
